@@ -55,16 +55,13 @@ func calculateDifference(list1 []int, list2 []int) int {
 func calculateSimilarityScore(list1 []int, list2 []int) int {
 	freq := make(map[int]int)
 	for _, num := range list2 {
-		freq[num] = freq[num] + 1
+		freq[num]++
 	}
 
 	score := 0
 
 	for _, num1 := range list1 {
-		if val, exists := freq[num1]; exists {
-			score += num1 * val
-		}
+		score += num1 * freq[num1]
 	}
-
 	return score
 }
